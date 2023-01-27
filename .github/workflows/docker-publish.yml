@@ -62,7 +62,7 @@ jobs:
         with:
           context: assisted-installer-agent
           file: assisted-installer-agent/Dockerfile.assisted_installer_agent
-          platform: linux/ppc64le
+          platforms: linux/ppc64le
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer-agent:latest-ppc
           cache-from: type=gha
