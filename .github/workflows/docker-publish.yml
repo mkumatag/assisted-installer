@@ -1,4 +1,4 @@
-name: Docker
+name: assisted-installer-agent
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -67,7 +67,7 @@ jobs:
           file: assisted-installer-agent/Dockerfile.assisted_installer_agent
           platforms: linux/ppc64le
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer-agent:latest-ppc
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer-agent:latest-ppc64le
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
