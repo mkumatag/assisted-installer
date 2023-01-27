@@ -37,7 +37,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          repository: openshift/assisted-installer-agent
+          repository: mkumatag/assisted-installer-agent
           path: assisted-installer-agent
 
       - name: Set up QEMU
