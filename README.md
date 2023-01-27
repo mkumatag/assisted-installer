@@ -1,0 +1,1 @@
+# build-assisted-installer-images
