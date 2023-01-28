@@ -38,7 +38,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: openshift/assisted-installer
-          path: assisted-installer
+
+      - name: Get short commit SHA
+        run: echo "SHORT_COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -63,10 +65,10 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: assisted-installer
-          file: assisted-installer/Dockerfile.assisted-installer
-          platforms: linux/ppc64le
+          context: .
+          file: Dockerfile.assisted-installer
+          platforms: linux/ppc64le, linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer:latest-ppc64le
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer:latest, ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer:${{ env.SHORT_COMMIT_SHA }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
