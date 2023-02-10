@@ -64,7 +64,7 @@ jobs:
         with:
           context: .
           file: Dockerfile.assisted_installer_agent
-          platforms: linux/ppc64le, linux/amd64
+          platforms: linux/ppc64le, linux/amd64, linux/s390x
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer-agent:latest, ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/assisted-installer-agent:${{ env.SHORT_COMMIT_SHA }}
           cache-from: type=gha
